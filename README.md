@@ -17,17 +17,15 @@ Replace this paragraph with your own summary of what your version does.
 
 ## How The System Works
 
-Explain your design in plain language.
+Real-world recommenders analyze massive behavioral datasets using collaborative filtering and deep learning to predict user intent. This simulation prioritizes content filtering, calculating relevance by matching song attributes directly against explicit user preferences.
 
-Some prompts to answer:
+**Simulation Features:**
 
-- What features does each `Song` use in your system
-  - For example: genre, mood, energy, tempo
-- What information does your `UserProfile` store
-- How does your `Recommender` compute a score for each song
-- How do you choose which songs to recommend
 
-You can include a simple diagram or bullet list if helpful.
+- **Song:** genre, mood, energy, tempo_bpm, valence, danceability, acousticness.
+- **UserProfile:** favorite_genre, favorite_mood, target_energy, likes_acoustic.
+- **Logic:** Computes a composite score based on attribute matches and proximity to target numerical values.
+
 
 ---
 
