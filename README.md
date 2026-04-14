@@ -1,17 +1,7 @@
 # 🎵 Music Recommender Simulation
 
-## Project Summary
+This project implements **VibeTracker 1.0**, a content-based music recommender that uses transparent scoring to suggest songs. It analyzes a dataset of 18 diverse tracks, matching them against user profiles using a weighted "algorithm recipe" that considers genre, mood, energy, and acousticness. The system is designed to provide clear explanations for its decisions, helping users understand the logic behind their personalized recommendations.
 
-In this project you will build and explain a small music recommender system.
-
-Your goal is to:
-
-- Represent songs and a user "taste profile" as data
-- Design a scoring rule that turns that data into recommendations
-- Evaluate what your system gets right and wrong
-- Reflect on how this mirrors real world AI recommenders
-
-Replace this paragraph with your own summary of what your version does.
 
 ---
 
@@ -233,3 +223,22 @@ A few sentences about what you learned:
 - How did building this change how you think about real music recommenders
 - Where do you think human judgment still matters, even if the model seems "smart"
 
+
+## Screenshots
+
+Below are the results from our stress test profiles:
+
+### 1. High-Energy Pop
+![High-Energy Pop Results](screenshots/1.png)
+
+### 2. Chill Lofi
+![Chill Lofi Results](screenshots/2.png)
+
+### 3. Deep Intense Rock
+![Deep Intense Rock Results](screenshots/3.png)
+
+### 4. Adversarial (Conflicting)
+![Adversarial Results](screenshots/4.png)
+
+### 5. Edge Case (Acoustic Metal)
+![Edge Case Results](screenshots/5.png)
