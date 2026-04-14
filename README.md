@@ -26,11 +26,14 @@ Real-world recommenders analyze massive behavioral datasets using collaborative 
 
 **Algorithm Recipe (Scoring Rules):**
 
-- **Genre Match (+3.0):** Highest weight; matching the primary genre preference.
-- **Mood Match (+2.0):** Significant weight for emotional alignment.
-- **Acoustic Preference (+1.5):** Boolean match based on whether the song's acousticness crosses a 0.5 threshold.
-- **Energy Proximity (Up to +2.0):** Calculated as `2.0 * (1 - abs(song.energy - user.target_energy))`.
-- **Valence/Danceability Proximity (Up to +1.0 each):** Rewards closeness to secondary musical targets.
+- **Genre Match (+3.0)**
+- **Mood Match (+2.0)**
+- **Acoustic Preference (+1.5)**
+- **Energy Proximity (Up to +2.0)**
+- **Valence/Danceability Proximity (Up to +1.0 each)**
+
+**Bias Note:** By weighting genre most heavily (+3.0), the system may create a "filter bubble" that ignores high-quality mood or energy matches if they fall outside the user's primary genre.
+
 
 **Logic:** Computes a composite score based on these weights to rank the top results.
 

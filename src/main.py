@@ -15,27 +15,66 @@ from recommender import load_songs, recommend_songs
 def main() -> None:
     songs = load_songs("data/songs.csv") 
 
-    # Refined example profile for testing
-    user_prefs = {
-        "favorite_genre": "synthwave",
-        "favorite_mood": "moody",
-        "target_energy": 0.70,
-        "likes_acoustic": False,
-        "target_valence": 0.50,
-        "target_danceability": 0.65
+    # Stress Test Profiles
+    test_profiles = {
+        "High-Energy Pop": {
+            "favorite_genre": "pop",
+            "favorite_mood": "happy",
+            "target_energy": 0.9,
+            "likes_acoustic": False,
+            "target_valence": 0.8,
+            "target_danceability": 0.9
+        },
+        "Chill Lofi": {
+            "favorite_genre": "lofi",
+            "favorite_mood": "chill",
+            "target_energy": 0.3,
+            "likes_acoustic": True,
+            "target_valence": 0.6,
+            "target_danceability": 0.4
+        },
+        "Deep Intense Rock": {
+            "favorite_genre": "rock",
+            "favorite_mood": "intense",
+            "target_energy": 0.85,
+            "likes_acoustic": False,
+            "target_valence": 0.4,
+            "target_danceability": 0.5
+        },
+        "Adversarial (Conflicting)": {
+            "favorite_genre": "classical",
+            "favorite_mood": "happy", # Classical is usually melancholic in this dataset
+            "target_energy": 0.9,     # Classical is usually low energy
+            "likes_acoustic": False,   # Classical is usually acoustic
+            "target_valence": 0.1,
+            "target_danceability": 0.1
+        },
+        "Edge Case (Acoustic Metal)": {
+            "favorite_genre": "metal",
+            "favorite_mood": "calm",
+            "target_energy": 0.1,
+            "likes_acoustic": True,
+            "target_valence": 0.1,
+            "target_danceability": 0.1
+        }
     }
 
+    for profile_name, user_prefs in test_profiles.items():
+        print("\n" + "="*60)
+        print(f"      TEST PROFILE: {profile_name.upper()}")
+        print("="*60)
+        
+        recommendations = recommend_songs(user_prefs, songs, k=3)
 
-    recommendations = recommend_songs(user_prefs, songs, k=5)
+        for i, (song, score, explanation) in enumerate(recommendations, 1):
+            print(f"{i}. {song['title'].upper()} (Score: {score:.2f})")
+            print(f"   Artist:  {song['artist']}")
+            print(f"   Reasons: {explanation}")
+            print("-" * 30)
 
-    print("\nTop recommendations:\n")
-    for rec in recommendations:
-        # You decide the structure of each returned item.
-        # A common pattern is: (song, score, explanation)
-        song, score, explanation = rec
-        print(f"{song['title']} - Score: {score:.2f}")
-        print(f"Because: {explanation}")
-        print()
+    print("\nStress test complete!\n")
+
+
 
 
 if __name__ == "__main__":

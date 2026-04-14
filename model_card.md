@@ -61,14 +61,9 @@ Prompts:
 
 ## 6. Limitations and Bias 
 
-Where the system struggles or behaves unfairly. 
+The system relies too much on genre labels, which can override specific mood and energy preferences. In tests like "Acoustic Metal," the model recommended loud, high-energy tracks simply because they matched the "Metal" tag. This creates a bias toward genre stereotypes instead of actual musical characteristics. Additionally, the small song catalog makes it difficult to find high-scoring matches for unique or niche tastes.
 
-Prompts:  
 
-- Features it does not consider  
-- Genres or moods that are underrepresented  
-- Cases where the system overfits to one preference  
-- Ways the scoring might unintentionally favor some users  
 
 ---
 
