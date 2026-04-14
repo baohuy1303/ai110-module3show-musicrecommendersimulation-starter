@@ -21,10 +21,33 @@ Real-world recommenders analyze massive behavioral datasets using collaborative 
 
 **Simulation Features:**
 
-
 - **Song:** genre, mood, energy, tempo_bpm, valence, danceability, acousticness.
-- **UserProfile:** favorite_genre, favorite_mood, target_energy, likes_acoustic.
-- **Logic:** Computes a composite score based on attribute matches and proximity to target numerical values.
+- **UserProfile:** favorite_genre, favorite_mood, target_energy, likes_acoustic, target_valence, target_danceability.
+
+**Algorithm Recipe (Scoring Rules):**
+
+- **Genre Match (+3.0):** Highest weight; matching the primary genre preference.
+- **Mood Match (+2.0):** Significant weight for emotional alignment.
+- **Acoustic Preference (+1.5):** Boolean match based on whether the song's acousticness crosses a 0.5 threshold.
+- **Energy Proximity (Up to +2.0):** Calculated as `2.0 * (1 - abs(song.energy - user.target_energy))`.
+- **Valence/Danceability Proximity (Up to +1.0 each):** Rewards closeness to secondary musical targets.
+
+**Logic:** Computes a composite score based on these weights to rank the top results.
+
+```mermaid
+graph TD
+    A[User Profile] --> D[Scoring Logic]
+    B[songs.csv] --> C[Load Songs]
+    C --> D
+    D --> E{For Every Song}
+    E --> F[Calculate Match Scores]
+    F --> G[Sum Total Score]
+    G --> H[Store in List]
+    H --> I[Sort by Score Descending]
+    I --> J[Select Top K Songs]
+    J --> K[Output Recommendations]
+```
+
 
 
 ---
